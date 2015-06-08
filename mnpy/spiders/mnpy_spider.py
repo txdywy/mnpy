@@ -9,7 +9,7 @@ class MnpySpider(Spider):
         items = []
         for i in tags:
     	    item = MnpyItem()
-            item['index'] = response.url.split('/')[-1]
+            item['page'] = response.url.split('/')[-1]
             item['title'] = i.xpath('text()').extract()
             item['url'] = i.xpath('@href').extract()
             if item['title'] and 'python' in item['title'][0].lower():

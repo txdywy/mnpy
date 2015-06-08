@@ -24,9 +24,9 @@ def init_db():
     Base.metadata.create_all(bind=engine)
 
 class ManongPython(Base):
-    __tablename__ = 'manong_python'
+    __tablename__ = 'mnpy'
     id = Column(Integer, primary_key=True)
-    index = Column(Integer)
+    page = Column(Integer)
     title = Column(String(512))
     url = Column(String(512))
     create_time = Column(DATETIME(), default=datetime.datetime.now())

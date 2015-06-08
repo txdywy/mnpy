@@ -9,6 +9,6 @@ from model import *
 
 class MnpyPipeline(object):
     def process_item(self, item, spider):
-        mp = ManongPython(index=item['index'], title=item['title'], url=item['url'])
+        mp = ManongPython(page=item['page'], title=item['title'], url=item['url'])
         flush(mp)
         return item
