@@ -14,4 +14,8 @@ SPIDER_MODULES = ['mnpy.spiders']
 NEWSPIDER_MODULE = 'mnpy.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'mnpy (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36'
+
+ITEM_PIPELINES = {
+    'mnpy.pipelines.MnpyPipeline': 300,
+}
