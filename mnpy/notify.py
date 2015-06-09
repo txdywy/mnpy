@@ -26,3 +26,14 @@ def task():
         for mp in mps:
             body += MNPY_SNIPPET % (mp.url, mp.title)
         notify(body)
+        html()
+
+def html():
+    mps = ManongPython.query.all()
+    body = ''
+    for mp in mps:
+        body += MNPY_SNIPPET % (mp.url, mp.title)
+    #print body
+    with open('/var/server/www/mnpy.html', 'w') as f:
+        f.write(body.encode('utf8'))
+
