@@ -22,8 +22,7 @@ def task():
     mps = ManongPython.query.filter(and_(ManongPython.create_time>yesterday, ManongPython.create_time<today)).all()
     #mps = ManongPython.query.all()
     print '=============', len(mps)
-    body = '<meta charset="UTF-8">'
-    body += MNPY_SNIPPET % ('http://appflood.ml/mnpy.html', u'\u6240\u6709\u7ed3\u679c\u7684\u9875\u9762')
+    body = MNPY_SNIPPET % ('http://appflood.ml/mnpy.html', u'\u6240\u6709\u7ed3\u679c\u7684\u9875\u9762')
     if mps:
         for mp in mps:
             body += MNPY_SNIPPET % (mp.url, mp.title)
@@ -32,7 +31,7 @@ def task():
 
 def html():
     mps = ManongPython.query.all()
-    body = ''
+    body = '<meta charset="UTF-8">'
     for mp in mps:
         body += MNPY_SNIPPET % (mp.url, mp.title)
     #print body
