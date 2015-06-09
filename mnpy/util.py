@@ -27,6 +27,9 @@ def ex(func):
 
 @ex
 def send_email(title, content, addr_to, addr_fr=None):
+    """
+    a local postfix service is presumed
+    """
     # Create the message
     if not addr_fr:
         addr_fr = SUPPORT   
