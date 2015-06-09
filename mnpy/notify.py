@@ -20,8 +20,10 @@ def task():
     today = datetime.datetime.now()
     yesterday = today - datetime.timedelta(1)
     mps = ManongPython.query.filter(and_(ManongPython.create_time>yesterday, ManongPython.create_time<today)).all()
+    #mps = ManongPython.query.all()
     print '=============', len(mps)
-    body = ''
+    body = '<meta charset="UTF-8">'
+    body += MNPY_SNIPPET % ('http://appflood.ml/mnpy.html', u'\u6240\u6709\u7ed3\u679c\u7684\u9875\u9762')
     if mps:
         for mp in mps:
             body += MNPY_SNIPPET % (mp.url, mp.title)
