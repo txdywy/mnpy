@@ -3,8 +3,8 @@ import util
 import datetime
 from sqlalchemy import and_
 
-MNPY_RECEIVER = 'weiyi@papayamobile.com'
-#MNPY_RECEIVER = 'appflood_engineer@papayamobile.com'
+#MNPY_RECEIVER = 'weiyi@papayamobile.com'
+MNPY_RECEIVER = 'appflood_engineer@papayamobile.com'
 
 MNPY_SNIPPET = """
 <h4 style="margin:0;margin-bottom:6px;margin-top:6px">
@@ -22,6 +22,7 @@ def task():
     mps = ManongPython.query.filter(and_(ManongPython.create_time>yesterday, ManongPython.create_time<today)).all()
     print '=============', len(mps)
     body = ''
-    for mp in mps:
-        body += MNPY_SNIPPET % (mp.url, mp.title)
-    notify(body)
+    if mps:
+        for mp in mps:
+            body += MNPY_SNIPPET % (mp.url, mp.title)
+        notify(body)

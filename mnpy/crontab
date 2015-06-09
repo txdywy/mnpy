@@ -1,0 +1,5 @@
+# m h  dom mon dow   command
+0 0 * * * cd ~/mnpy/mnpy/; scrapy crawl mnpy
+5 0 * * * cd ~/mnpy/mnpy/; python -c 'import notify as n; n.task()'
+0 6 * * * cd ~/mnpy/mnpy/; scrapy crawl mnpy
+5 6 * * * cd ~/mnpy/mnpy/; python -c 'import notify as n; n.task()'
