@@ -2,9 +2,15 @@ from model import *
 import util
 import datetime
 from sqlalchemy import and_, desc
+try:
+    from config import mail_list
+except:
+    mail_list = []
 
-#MNPY_RECEIVER = 'weiyi@papayamobile.com'
-MNPY_RECEIVER = 'appflood_engineer@papayamobile.com'
+MNPY_RECEIVER = 'weiyi@papayamobile.com'
+#MNPY_RECEIVER = 'appflood_sandbox@papayamobile.com'
+if not mail_list:
+    mail_list.append(MNPY_RECEIVER)
 
 MNPY_SNIPPET = """
 <h4 style="margin:0;margin-bottom:6px;margin-top:6px">
@@ -13,8 +19,8 @@ MNPY_SNIPPET = """
 
 def notify(body='\xe4\xbb\x80\xe4\xb9\x88\xe9\x83\xbd\xe6\xb2\xa1\xe6\x9c\x89......'):
     title = '[Python]\xe7\xa0\x81\xe5\x86\x9c\xe5\x91\xa8\xe5\x88\x8aPython\xe7\x9b\xb8\xe5\x85\xb3\xe4\xb8\xbb\xe9\xa2\x98\xe6\x9b\xb4\xe6\x96\xb0'
-    util.send_email(title, body, MNPY_RECEIVER)
-
+    for mail in mail_list:
+        util.send_email(title, body, mail)
 
 def task():
     today = datetime.datetime.now()
